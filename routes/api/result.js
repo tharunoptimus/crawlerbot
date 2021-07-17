@@ -15,46 +15,6 @@ var seenUrls = {};
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 
-router.get("/", async (req, res, next) => {
-    var searchObj = req.query;
-    if(req.query.q !== undefined) {
-
-        var start = req.query.start !== undefined ? req.query.start : 0;
-        
-        if(req.query.type === undefined) {
-            searchObj = {
-                $or: [
-                    { url: { $regex: searchObj.q }},
-                    { title: { $regex: searchObj.q }},
-                    { description: { $regex: searchObj.q }},
-                    { keywords: { $regex: searchObj.q }},
-                ]
-            }
-            await Site.find(searchObj).skip(start).limit(10)
-            .then( results => res.status(200).send(results))
-            .catch(error => {
-                console.log(error);
-                res.sendStatus(500);
-            })
-        }
-        else if(req.query.type == "images") {
-            searchObj = {
-                $or: [
-                    { url: { $regex: searchObj.q }},
-                    { alt: { $regex: searchObj.q }},
-                ]
-            }
-            await Image.find(searchObj).skip(start).limit(10)
-            .then( results => res.status(200).send(results))
-            .catch(error => {
-                console.log(error);
-                res.sendStatus(500);
-            })
-        }
-    }
-
-})
-
 router.post("/", async (req, res, next) => {
     
     if(!req.body.url) {
