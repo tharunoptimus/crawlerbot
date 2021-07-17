@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="author", content="tharunoptimus")
+        meta(name="keywords", content="crawler")
+        meta(name="description", content="crawler using expressjs")
+
+        title Crawl
+        link(rel="stylesheet", href="/css/main.css", id="maincss")
+    body
+        .bodyWrapper    
+            .wrapper
+                div#crawlResult Crawling
+                .logoContainerDiv
+                    .logoImageContainer
+                        img(src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png", alt="Logo")
+                .inputFieldContainer
+                    .inputFieldHolder
+                        input#urlInput(type="url", name="urlInput", placeholder="Enter an URL")
+                button#crawlButton(type="submit")
+                    i(class='far fa-spider-black-widow') 
+                    span(style='padding: 0.5rem;') Crawl
+
+        script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+        script(src='/js/common.js')
