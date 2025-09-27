@@ -1,7 +1,7 @@
 # Crawl websites for URLs and Images and add it to your database
 
 ## Config
-Replace the database name, username and password with your own credentials in the database connection string in the database.js
+Add environment variable `MONGODB_URI` with your MongoDB connection string
 
 ## Install
 `npm install` to install dependencies
